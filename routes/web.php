@@ -14,11 +14,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return "This is the /home page";
+    return view("welcome");
 });
 
 Route::get('/home', function () {
-    return view('welcome');
+    return "This is the home page";
+});
+
+Route::get('home/{name?}', function ($name = 'No Name') {
+    return "This is $name's home page";
 });
 
 Route::get('/dashboard', function () {
