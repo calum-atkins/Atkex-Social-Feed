@@ -18,5 +18,7 @@ class ProfileTableSeeder extends Seeder
         $p->firstname = "James";
         $p->surname = "Jones";
         $p->save();
+
+        $profiles = Profile::factory()->count(10)->create();
     }
 }
