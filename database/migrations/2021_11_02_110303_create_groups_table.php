@@ -15,9 +15,9 @@ class CreateGroupsTable extends Migration
     {
         Schema::create('groups', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('description');
-            $table->bigInteger('profile_id')->unsigned();
+            $table->string('name'); //Name of the group
+            $table->string('description'); //Description of teh group
+            $table->bigInteger('profile_id')->unsigned(); //Group admin
             $table->timestamps();
 
             $table->foreign('profile_id')->references('id')->
