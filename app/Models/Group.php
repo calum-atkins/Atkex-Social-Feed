@@ -18,4 +18,9 @@ class Group extends Model
     {
         return $this->hasMany(Post::class);
     }
+
+    public function profiles()
+    {
+        return $this->belongsToMany(Profile::class);
+    }
 }
