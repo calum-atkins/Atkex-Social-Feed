@@ -13,4 +13,9 @@ class Profile extends Model
     {
         return $this->hasOne(Group::class);
     }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
 }

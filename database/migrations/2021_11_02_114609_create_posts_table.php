@@ -16,8 +16,8 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('post_info'); //Information on the post (text/image the user has posted)
-            $table->bigInteger('profile_id')->unsigned(); //Group admin
-            $table->bigInteger('group_id')->unsigned();
+            $table->bigInteger('profile_id')->unsigned(); //profile  of who posted
+            $table->bigInteger('group_id')->unsigned(); //posted to what group
             $table->timestamps();
 
             $table->foreign('profile_id')->references('id')->on('profiles');
