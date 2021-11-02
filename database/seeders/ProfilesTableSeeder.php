@@ -14,11 +14,6 @@ class ProfilesTableSeeder extends Seeder
      */
     public function run()
     {
-        $p = new Profile();
-        $p->firstname = "James";
-        $p->surname = "Jones";
-        $p->save();
-
-        $profiles = Profile::factory()->count(10)->create();
+        $profiles = Profile::factory()->count(20)->create();
     }
 }
