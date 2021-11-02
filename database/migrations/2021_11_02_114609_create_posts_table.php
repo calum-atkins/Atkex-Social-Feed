@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGroupsTable extends Migration
+class CreatePostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreateGroupsTable extends Migration
      */
     public function up()
     {
-        Schema::create('groups', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string('name'); //Name of the group
-            $table->string('description'); //Description of the group
+            $table->string('post_info'); //Information on the post (text/image the user has posted)
             $table->bigInteger('profile_id')->unsigned(); //Group admin
+            $table->bigInteger('group_id')->unsigned();
             $table->timestamps();
 
-            $table->foreign('profile_id')->references('id')->
-                on('profiles')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('profile_id')->references('id')->on('profiles');
+            $table->foreign('group_id')->references('id')->on('groups');
         });
     }
 
@@ -32,6 +32,6 @@ class CreateGroupsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('groups');
+        Schema::dropIfExists('posts');
     }
 }
