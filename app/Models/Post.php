@@ -9,12 +9,20 @@ class Post extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['post_info', 'img'];
+
     public function group()
     {
         return $this->belongsTo(Group::class);
     }
+
     public function profile()
     {
         return $this->belongsTo(Profile::class);
+    }
+
+    public function comments()
+    {
+        return $this->belongsToMany(Comment::class);
     }
 }

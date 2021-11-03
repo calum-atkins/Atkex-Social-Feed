@@ -9,6 +9,10 @@ class Group extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name', 'description'];
+
+    //protected $fillable = ['profile_id' => 1];
+
     public function profile()
     {
         return $this->belongsTo(Profile::class);

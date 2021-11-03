@@ -9,6 +9,8 @@ class Profile extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['username', 'password'];
+
     public function groupAdmin()
     {
         return $this->hasOne(Group::class);
