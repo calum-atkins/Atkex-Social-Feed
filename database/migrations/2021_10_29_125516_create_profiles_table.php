@@ -17,8 +17,8 @@ class CreateProfilesTable extends Migration
             $table->id();
             $table->string('username');
             $table->string('password');
-            $table->date('date_of_birth')->nullable();
             $table->string('email')->nullable();
+            $table->date('date_of_birth')->nullable();
             $table->timestamps();
         });
     }
