@@ -22,8 +22,8 @@ class ProfileFactory extends Factory
     public function definition()
     {
         return [
-            'firstname' => $this->faker->firstName(),
-            'surname' => $this->faker->lastName(),
+            'username' => $this->faker->firstName(),
+            'password' => $this->faker->lastName(),
             'date_of_birth' => $this->faker->date($format = 'Y-m-d', $max = 'now'),
             'email' => $this->faker->freeEmail(),
         ];

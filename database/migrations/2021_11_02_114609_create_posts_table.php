@@ -16,13 +16,15 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('post_info'); //Information on the post (text/image the user has posted)
-            $table->string('img');
+            $table->string('img'); //Image the user has posted
             $table->bigInteger('profile_id')->unsigned(); //profile  of who posted
             $table->bigInteger('group_id')->unsigned(); //posted to what group
             $table->timestamps();
 
-            $table->foreign('profile_id')->references('id')->on('profiles');
-            $table->foreign('group_id')->references('id')->on('groups');
+            $table->foreign('profile_id')->references('id')->
+                on('profiles')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('group_id')->references('id')->
+                on('groups')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
