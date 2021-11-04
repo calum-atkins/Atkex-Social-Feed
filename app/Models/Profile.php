@@ -25,4 +25,9 @@ class Profile extends Model
     {
         return $this->belongsToMany(Group::class);
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }
