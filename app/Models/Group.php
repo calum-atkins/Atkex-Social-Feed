@@ -11,8 +11,6 @@ class Group extends Model
 
     protected $fillable = ['name', 'description'];
 
-    //protected $fillable = ['profile_id' => 1];
-
     public function profile()
     {
         return $this->belongsTo(Profile::class);

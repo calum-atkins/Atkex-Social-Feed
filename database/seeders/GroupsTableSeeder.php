@@ -14,6 +14,14 @@ class GroupsTableSeeder extends Seeder
      */
     public function run()
     {
+        $p = new Group;
+        $p->name = 'group 55';
+        $p->description = 'this is group 55';
+        $p->profile_id = 1;
+        $p->save();
+
+        $p->profiles()->attach(1);
+
         $groups = Group::factory()->count(5)->create();
     }
 }
