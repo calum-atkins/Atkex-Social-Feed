@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use App\Models\Post;
+use App\Models\Profile;
+use App\Models\Group;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PostFactory extends Factory
@@ -22,10 +24,10 @@ class PostFactory extends Factory
     public function definition()
     {
         return [
-            'post_info' => $this->faker->realText(50, 2),
-            'img' => $this->faker->imageUrl(640, 480),
-            'profile_id' => $this->faker->numberBetween(1,20),
-            'group_id' => $this->faker->numberBetween(1,5),
+            'title' => $this->faker->realText(50, 2),
+            'contents' => $this->faker->imageUrl(640, 480),
+            'profile_id' => Profile::factory(),
+            'group_id' => Group::factory(),
         ];
     }
 }

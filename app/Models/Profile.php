@@ -11,7 +11,7 @@ class Profile extends Model
 
     protected $fillable = ['username', 'password'];
 
-    public function groupAdmin()
+    public function group_admin()
     {
         return $this->hasOne(Group::class);
     }

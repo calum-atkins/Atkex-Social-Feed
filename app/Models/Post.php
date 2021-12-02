@@ -11,7 +11,7 @@ class Post extends Model
 
     protected $fillable = ['post_info', 'img'];
 
-    public function group()
+    public function group_admin()
     {
         return $this->belongsTo(Group::class);
     }

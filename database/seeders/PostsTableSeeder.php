@@ -14,6 +14,13 @@ class PostsTableSeeder extends Seeder
      */
     public function run()
     {
+        $p = new Post;
+        $p->title = "post title";
+        $p->contents = "contents of the post";
+        $p->profile_id = 1;
+        $p->group_id = 1;
+        $p->save();
+
         $posts = Post::factory()->count(40)->create();
     }
 }

@@ -14,6 +14,12 @@ class CommentsTableSeeder extends Seeder
      */
     public function run()
     {
+        $c = new Comment;
+        $c->contents = "test reply";
+        $c->profile_id = 1;
+        $c->post_id = 1;
+        $c->save();
+
         $comments = Comment::factory()->count(50)->create();
     }
 }

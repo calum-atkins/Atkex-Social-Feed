@@ -24,7 +24,6 @@ class ProfileFactory extends Factory
         return [
             'username' => $this->faker->firstName(),
             'password' => $this->faker->lastName(),
-            'date_of_birth' => $this->faker->date($format = 'Y-m-d', $max = 'now'),
             'email' => $this->faker->freeEmail(),
         ];
     }
