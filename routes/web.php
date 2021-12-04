@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,13 +22,17 @@ Route::get('/home', function () {
     return "This is the home page";
 });
 
-Route::get('home/{name?}', function ($name = 'No Name') {
+Route::get('/home/{name?}', function ($name = 'No Name') {
     return "This is $name's home page";
 });
 
-Route::get('/profiles/{profile?}', function($profile = null) {
-    return view('profile', ['profile'=>$profile]);
-});
+// Route::get('/profiles/{profile?}', function($profile = null) {
+//     return view('profile', ['profile'=>$profile]);
+// });
+
+Route::get('/profiles', [ProfileController::class, 'index']);
+Route::get('/profiles/{id}', [ProfileController::class, 'show']);
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
