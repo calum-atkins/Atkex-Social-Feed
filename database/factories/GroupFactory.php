@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Group;
+use App\Models\Profile;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class GroupFactory extends Factory
@@ -24,7 +25,7 @@ class GroupFactory extends Factory
         return [
             'name' => $this->faker->domainWord(),
             'description' => $this->faker->city(),
-            'profile_id' => $this->faker->numberBetween(1,20),
+            'profile_id' => Profile::factory(),
         ];
     }
 }

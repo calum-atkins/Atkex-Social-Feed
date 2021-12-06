@@ -27,7 +27,7 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        //
+        return view('profiles.create');
     }
 
     /**
@@ -38,7 +38,22 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request['username']);
+        $validatedData = $request->validate([
+            'username' => 'required|max:25',
+            'password' => 'required|max:255',
+            'email' => 'required|max:255',
+        ]);
+        //return "Passed Validation";
+
+        $p = new Profile;
+        $p->username = $validatedData['username'];
+        $p->password = $validatedData['password'];
+        $p->email = $validatedData['email'];
+        $p->save();
+
+        session()->flash('message', 'Profile was created.');
+        return redirect()->route('profiles.index');
     }
 
     /**
@@ -50,6 +65,7 @@ class ProfileController extends Controller
     public function show($id)
     {
         $profile = Profile::findOrFail($id);
+        //dump($profile);
         return view('profiles.show', ['profile' => $profile]);
     }
 

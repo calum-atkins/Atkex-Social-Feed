@@ -30,8 +30,10 @@ Route::get('/home/{name?}', function ($name = 'No Name') {
 //     return view('profile', ['profile'=>$profile]);
 // });
 
-Route::get('/profiles', [ProfileController::class, 'index']);
-Route::get('/profiles/{id}', [ProfileController::class, 'show']);
+Route::get('/profiles', 'App\Http\Controllers\ProfileController@index')->name('profiles.index');
+Route::get('/profiles/create', 'App\Http\Controllers\ProfileController@create')->name('profiles.create');
+Route::post('/profiles', 'App\Http\Controllers\ProfileController@store')->name('profiles.store');
+Route::get('/profiles/{id}', 'App\Http\Controllers\ProfileController@show')->name('profiles.show');
 
 
 Route::get('/dashboard', function () {
