@@ -17,7 +17,7 @@ class PostsTableSeeder extends Seeder
         $p = new Post;
         $p->title = "post title";
         $p->contents = "contents of the post";
-        $p->profile_id = 1;
+        $p->user_id = 1;
         $p->group_id = 1;
         $p->save();
 

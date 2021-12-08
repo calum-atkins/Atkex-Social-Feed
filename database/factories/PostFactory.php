@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Post;
-use App\Models\Profile;
+use App\Models\User;
 use App\Models\Group;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -26,7 +26,7 @@ class PostFactory extends Factory
         return [
             'title' => $this->faker->realText(50, 2),
             'contents' => $this->faker->imageUrl(640, 480),
-            'profile_id' => Profile::factory(),
+            'user_id' => User::factory(),
             'group_id' => Group::factory(),
         ];
     }

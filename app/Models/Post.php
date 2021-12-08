@@ -16,9 +16,9 @@ class Post extends Model
         return $this->belongsTo(Group::class);
     }
 
-    public function profile()
+    public function user()
     {
-        return $this->belongsTo(Profile::class);
+        return $this->belongsTo(User::class);
     }
 
     public function comments()

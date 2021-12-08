@@ -15,7 +15,7 @@ class Comment extends Model
     {
         return $this->belongsTo(Post::class);
     }
-    public function profile()
+    public function user()
     {
         return $this->belongsTo(Post::class);
     }

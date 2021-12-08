@@ -17,12 +17,12 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->string('title'); //Information on the post (text/image the user has posted)
             $table->string('contents'); //Image the user has posted
-            $table->bigInteger('profile_id')->unsigned(); //profile  of who posted
+            $table->bigInteger('user_id')->unsigned(); //profile  of who posted
             $table->bigInteger('group_id')->unsigned(); //posted to what group
             $table->timestamps();
 
-            $table->foreign('profile_id')->references('id')->
-                on('profiles')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->
+                on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('group_id')->references('id')->
                 on('groups')->onDelete('cascade')->onUpdate('cascade');
         });

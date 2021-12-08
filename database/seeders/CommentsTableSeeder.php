@@ -16,7 +16,7 @@ class CommentsTableSeeder extends Seeder
     {
         $c = new Comment;
         $c->contents = "test reply";
-        $c->profile_id = 1;
+        $c->user_id = 1;
         $c->post_id = 1;
         $c->save();
 

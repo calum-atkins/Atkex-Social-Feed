@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Comment;
-use App\Models\Profile;
+use App\Models\User;
 use App\Models\Post;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -25,7 +25,7 @@ class CommentFactory extends Factory
     {
         return [
             'contents' => $this->faker->realText(50, 2),
-            'profile_id' => Profile::factory(),
+            'user_id' => User::factory(),
             'post_id' => Post::factory(),
         ];
     }

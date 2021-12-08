@@ -17,11 +17,11 @@ class CreateGroupsTable extends Migration
             $table->id();
             $table->string('name'); //Name of the group
             $table->string('description'); //Description of the group
-            $table->bigInteger('profile_id')->unsigned(); //Group admin
+            $table->bigInteger('user_id')->unsigned(); //Group admin
             $table->timestamps();
 
-            $table->foreign('profile_id')->references('id')->
-                on('profiles')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->
+                on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
