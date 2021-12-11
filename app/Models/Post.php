@@ -9,9 +9,9 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['post_info', 'img'];
+    protected $fillable = ['title', 'contents'];
 
-    public function group_admin()
+    public function group()
     {
         return $this->belongsTo(Group::class);
     }
@@ -25,4 +25,6 @@ class Post extends Model
     {
         return $this->hasMany(Comment::class);
     }
+
+
 }

@@ -11,19 +11,9 @@ class Group extends Model
 
     protected $fillable = ['name', 'description'];
 
-    public function profile()
-    {
-        return $this->belongsTo(Profile::class);
-    }
-
     public function posts()
     {
         return $this->hasMany(Post::class);
-    }
-
-    public function profiles()
-    {
-        return $this->belongsToMany(Profile::class);
     }
 
     public function users()

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Profile;
+Use App\Models\Post;
 
-class ProfileController extends Controller
+class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +14,8 @@ class ProfileController extends Controller
      */
     public function index()
     {
-
-        $profiles = Profile::all();
-        return view('profiles.index', ['profiles' => $profiles]);
-
+        $posts = Post::all();
+        return view('posts.index', ['posts' => $posts]);
     }
 
     /**
@@ -27,7 +25,7 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        return view('profiles.create');
+        return view('posts.create');
     }
 
     /**
@@ -40,20 +38,20 @@ class ProfileController extends Controller
     {
         //dd($request['username']);
         $validatedData = $request->validate([
-            'username' => 'required|max:25',
-            'password' => 'required|max:255',
-            'email' => 'required|max:255',
+            'title' => 'required|max:25',
+            'contents' => 'required|max:255',
         ]);
         //return "Passed Validation";
 
-        $p = new Profile;
-        $p->username = $validatedData['username'];
-        $p->password = $validatedData['password'];
-        $p->email = $validatedData['email'];
+        $p = new Post;
+        $p->title = $validatedData['title'];
+        $p->contents = $validatedData['contents'];
+        $p->user_id = 1;
+        $p->group_id = 1;
         $p->save();
 
-        session()->flash('message', 'Profile was created.');
-        return redirect()->route('profiles.index');
+        session()->flash('message', 'Post was created.');
+        return redirect()->route('posts.index');
     }
 
     /**
@@ -64,9 +62,9 @@ class ProfileController extends Controller
      */
     public function show($id)
     {
-        $profile = Profile::findOrFail($id);
+        $post = Post::findOrFail($id);
         //dump($profile);
-        return view('profiles.show', ['profile' => $profile]);
+        return view('posts.show', ['post' => $post]);
     }
 
     /**
