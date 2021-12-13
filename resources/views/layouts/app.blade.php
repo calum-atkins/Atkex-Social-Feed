@@ -6,12 +6,13 @@
 
         <!-- Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 
         <title>Atkex Blog</title>
 
         <!-- Fonts -->
-        <link href="atkex.css" rel="stylesheet">
+        {{-- <link href="atkex.css" rel="stylesheet"> --}}
 
         <!-- Styles -->
         <style>
@@ -19,86 +20,67 @@
         </style>
 
         <style>
-            body {
+            /* body {
                 font-family: 'Arial';
-            }
+                font-size: 16;
+            } */
         </style>
     </head>
 
     <body>
-        <div id="app">
-            <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-                <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    <img src="../assets/atkex_trans.jpeg" alt="Image" width=200 height=75>
+                </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/dashboard">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/posts">Posts</a>
+                    </li>
 
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <!-- Left Side Of Navbar -->
-                        <ul class="navbar-nav mr-auto">
-                            <a class="navbar-brand fixed top-0 left-0" href="{{ url('/') }}">
-                                <img src="../assets/atkex_trans.jpeg" alt="Image" width=200 height=75>
-
+                </ul>
+                <div class="d-flex navbar-nav mr-auto mb-2 mb-lg-0">
+                    @if (Route::has('login'))
+                    @auth
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout"onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">{{ __('Logout') }}
                             </a>
-                        </ul>
+                        </li>
 
-                        <!-- Right Side Of Navbar -->
-                        <ul class="navbar-nav ml-auto">
-                            @if (Route::has('login'))
-                                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                            @auth
-                                <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
-                                <a class="text-sm text-gray-700 dark:text-gray-500 underline" href="{{ route('logout') }}"onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">{{ __('Logout') }}
-                                </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                            @else
-                                <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
-                                @if (Route::has('register'))
-                                    <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-                                @endif
-                            @endauth
-                        </div>
-                        @endif
-                            <!-- Authentication Links -->
-
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-
-            <main class="py-4">
-                @yield('content')
-            </main>
-        </div>
-    {{-- <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-800 sm:items-center py-4 sm:pt-0">
-        @if (Route::has('login'))
-            <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                @auth
-                    <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
-                    <a class="text-sm text-gray-700 dark:text-gray-500 underline" href="{{ route('logout') }}"onclick="event.preventDefault();
-                        document.getElementById('logout-form').submit();">{{ __('Logout') }}
-                    </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
-                @else
-                    <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                        <form id="logout-form" action="logout" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login">Log in</a>
+                        </li>
+                        <li class="nav-item">
+                            @if (Route::has('register'))
+                                <a class="nav-link" href="/register" >Register</a>
+                            @endif
+                        </li>
+                    @endauth
                     @endif
-                @endauth
+                    </div>
+              </div>
             </div>
-            <div class="fixed top-0 left-0 px-6 py-4 sm:block">
-                <img src="../assets/atkex_trans.jpeg" alt="Image" width=200 height=75>
-            </div>
-        @endif
+        </nav>
 
 
-        <body>
+        <div class="container">
+            @yield('content')
+        </div>
+
+
+        {{-- <body>
             <h1>@yield('title')</h1>
                 @if ($errors->any())
             <div>

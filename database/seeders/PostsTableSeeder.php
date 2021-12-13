@@ -15,9 +15,9 @@ class PostsTableSeeder extends Seeder
     public function run()
     {
         $p = new Post;
-        $p->title = "post title";
-        $p->contents = "contents of the post";
-        $p->img = "testimg.png";
+        $p->title = "Post title";
+        $p->contents = "Contents of the post";
+        $p->img = "../assets/atkex_trans.jpeg";
         $p->user_id = 1;
         $p->group_id = 1;
         $p->save();

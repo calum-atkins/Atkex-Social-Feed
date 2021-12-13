@@ -32,9 +32,11 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::get('/', 'App\Http\Controllers\PostController@index')->name('posts.index')->middleware(['auth']);
+Route::get('/posts', 'App\Http\Controllers\PostController@index')->name('posts.index')->middleware(['auth']);
 Route::get('/posts/create', 'App\Http\Controllers\PostController@create')->name('posts.create');
 Route::post('/posts', 'App\Http\Controllers\PostController@store')->name('posts.store');
 Route::get('/posts/{id}', 'App\Http\Controllers\PostController@show')->name('posts.show');
+
 Route::post('logout', 'App\Http\Controllers\Auth\AuthenticatedSessionController@destroy');
 
 require __DIR__.'/auth.php';
