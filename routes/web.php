@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,30 +15,26 @@ use App\Http\Controllers\ProfileController;
 |
 */
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view("welcome");
 });
 
-Route::get('/home', function () {
-    return "This is the home page";
-});
-
-Route::get('/home/{name?}', function ($name = 'No Name') {
-    return "This is $name's home page";
-});
-
-// Route::get('/profiles/{profile?}', function($profile = null) {
-//     return view('profile', ['profile'=>$profile]);
+// Route::get('/home', function () {
+//     return "This is the home page";
 // });
 
-Route::get('/posts', 'App\Http\Controllers\PostController@index')->name('posts.index');
-Route::get('/posts/create', 'App\Http\Controllers\PostController@create')->name('posts.create');
-Route::post('/posts', 'App\Http\Controllers\PostController@store')->name('posts.store');
-Route::get('/posts/{id}', 'App\Http\Controllers\PostController@show')->name('posts.show');
-
+// Route::get('/home/{name?}', function ($name = 'No Name') {
+//     return "This is $name's home page";
+// });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::get('/', 'App\Http\Controllers\PostController@index')->name('posts.index')->middleware(['auth']);
+Route::get('/posts/create', 'App\Http\Controllers\PostController@create')->name('posts.create');
+Route::post('/posts', 'App\Http\Controllers\PostController@store')->name('posts.store');
+Route::get('/posts/{id}', 'App\Http\Controllers\PostController@show')->name('posts.show');
+Route::post('logout', 'App\Http\Controllers\Auth\AuthenticatedSessionController@destroy');
 
 require __DIR__.'/auth.php';

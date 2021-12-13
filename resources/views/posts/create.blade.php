@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Create Profile
+    Create Post
 @endsection
 
 @section('content')

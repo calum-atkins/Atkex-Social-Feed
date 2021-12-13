@@ -17,10 +17,11 @@ class PostsTableSeeder extends Seeder
         $p = new Post;
         $p->title = "post title";
         $p->contents = "contents of the post";
+        $p->img = "testimg.png";
         $p->user_id = 1;
         $p->group_id = 1;
         $p->save();
 
-        $posts = Post::factory()->count(40)->create();
+        $posts = Post::factory()->count(30)->create();
     }
 }

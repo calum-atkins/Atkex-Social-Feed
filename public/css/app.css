@@ -47,6 +47,8 @@ Remove the margin in all browsers.
 */
 
 body {
+    background: grey;
+    color: grey;
   margin: 0;
 }
 
@@ -328,7 +330,7 @@ pre {
 }
 
 button {
-  background-color: transparent;
+  background-color: black;
   background-image: none;
 }
 
@@ -366,8 +368,8 @@ html {
  */
 
 body {
-  font-family: inherit;
-  line-height: inherit;
+  font-family: arial;
+  line-height: arial;
 }
 
 /**
@@ -526,14 +528,14 @@ samp {
  *    CSS Remedy, with `svg` added as well.
  *
  *    https://github.com/mozdevs/cssremedy/issues/14
- * 
+ *
  * 2. Add `vertical-align: middle` to align replaced elements more
  *    sensibly by default when overriding `display` by adding a
  *    utility like `inline`.
  *
  *    This can trigger a poorly considered linting error in some
  *    tools but is included by design.
- * 
+ *
  *    https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210
  */
 
@@ -595,7 +597,7 @@ video {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  background-color: #fff;
+  background-color: rgb(0, 0, 0);
   border-color: #6b7280;
   border-width: 1px;
   border-radius: 0px;
