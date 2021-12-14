@@ -36,7 +36,7 @@
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              {{-- <div class="collapse navbar-collapse" id="navbarSupportedContent"> --}}
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item active">
                         <a class="nav-link" href="/dashboard">Home</a>
@@ -45,6 +45,11 @@
                         <a class="nav-link" href="/posts">Posts</a>
                     </li>
 
+                </ul>
+                <ul class="navbar-nav justify-content-center navbar-collapse">
+                    <h1 class="nav-item">
+                        @yield('title')
+                    </h1>
                 </ul>
                 <div class="d-flex navbar-nav mr-auto mb-2 mb-lg-0">
                     @if (Route::has('login'))
@@ -72,10 +77,11 @@
                     </div>
               </div>
             </div>
+
         </nav>
 
 
-        <div class="container">
+        <div class="row">
             @yield('content')
         </div>
 

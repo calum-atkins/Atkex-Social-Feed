@@ -3,9 +3,8 @@
 @section('title', 'Post Details')
 
 @section('content')
-<div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-5">
             <ul>
                 <h1>{{$post->title}}</h1>
                 <img src={{$post->img}} class="card-img-top" alt="image"></a>
