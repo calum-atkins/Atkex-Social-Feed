@@ -39,4 +39,6 @@ Route::get('/posts/{id}', 'App\Http\Controllers\PostController@show')->name('pos
 
 Route::post('logout', 'App\Http\Controllers\Auth\AuthenticatedSessionController@destroy');
 
+Route::post('comments/{post_id}', 'App\Http\Controllers\CommentController@store')->name('comments.store');
+
 require __DIR__.'/auth.php';

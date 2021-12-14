@@ -22,7 +22,15 @@
                         {{-- link to group here --}}
                         <dt>Group: {{$post->group->name}}</dt>
                     </div>
+                    @foreach($post->comments as $comment)
+                    <div class="card">
+                        <div class="card-header">
+                            comment by {{$comment->user_id}}
+                        {{ $comment->contents}}
+                    </div>
+                    @endforeach
                 </div>
+
             @endforeach
 
             <div class="card">
