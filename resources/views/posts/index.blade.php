@@ -31,7 +31,7 @@
                             Comments
                         </div>
                         <div class="card-body">
-                            comment by {{$comment->name}}:
+                            Comment by {{$comment->user->name}}:
                         {{ $comment->contents}}
                         </div>
                     </div>
