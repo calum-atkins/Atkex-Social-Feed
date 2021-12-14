@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    <h1>ATKEX</h1>
+    <h1>ATKEX Dashboard</h1>
 @endsection
 
 @section('content')
@@ -11,14 +11,9 @@
             <div class="card">
                 <div class="card-header">Dashboard</div>
                 <div class="card-body">
-                    You are logged in!
-                </div>
-            </div>
+                    Post ammount:
+                    Comment:
 
-            <div class="card">
-                <div class="card-header">two</div>
-                <div class="card-body">
-                    You are logged in!
                 </div>
             </div>
         </div>

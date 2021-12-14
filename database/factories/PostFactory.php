@@ -26,7 +26,7 @@ class PostFactory extends Factory
         return [
             'title' => $this->faker->realText(20, 1),
             'contents' => $this->faker->realText(100, 1),
-            'img' => $this->faker->imageUrl(640, 480),
+            'image' => $this->faker->imageUrl(640, 480),
             'user_id' => User::factory(),
             'group_id' => Group::factory(),
         ];

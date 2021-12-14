@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 Use App\Models\Post;
+use Illuminate\Support\Facades\DB;
+
 
 class PostController extends Controller
 {
@@ -14,7 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::orderBy('id', 'desc')->paginate(10);
         return view('posts.index', ['posts' => $posts]);
     }
 
@@ -40,12 +42,14 @@ class PostController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|max:25',
             'contents' => 'required|max:255',
+            'image' => 'required|max:255',
         ]);
         //return "Passed Validation";
 
         $p = new Post;
         $p->title = $validatedData['title'];
         $p->contents = $validatedData['contents'];
+        $p->image = $validatedData['image'];
         $p->user_id = 1;
         $p->group_id = 1;
         $p->save();
@@ -75,7 +79,8 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+        return view('posts.edit', ['post' => $post]);
     }
 
     /**
@@ -87,7 +92,24 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //dd($request['username']);
+        $this->validate($request, array(
+            'title' => 'required|max:25',
+            'contents' => 'required|max:255',
+            'image' => 'required|max:255',
+        ));
+        //return "Passed Validation";
+
+        $post = Post::find($id);
+        $post->title = $request->input('title');
+        $post->contents = $request->input('contents');
+        $post->image = $request->input('image');
+        $post->user_id = $request->input('user_id');
+        $post->group_id = $request->input('group_id');
+        $post->save();
+
+        session()->flash('message', 'Post was Edited.');
+        return redirect()->route('posts.show', $post->id);
     }
 
     /**

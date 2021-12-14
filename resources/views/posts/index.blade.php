@@ -18,7 +18,7 @@
                     <div class="card-header">
                         posted by <b>{{$post->user->name}}</b>
                     </div>
-                    <img src={{$post->img}} class="card-img-top" alt="image"></a>
+                    <img src={{$post->image}} class="card-img-top" alt="image"></a>
                     <div class="card-body">
                         <h5 class="card-title">{{$post->title}}</h5>
                         <p class="card-text">{{$post->contents}}</p>
@@ -31,7 +31,7 @@
                             Comments
                         </div>
                         <div class="card-body">
-                            comment by {{$comment->user_id}}:
+                            comment by {{$comment->name}}:
                         {{ $comment->contents}}
                         </div>
                     </div>
@@ -39,7 +39,9 @@
 
                 </div>
             @endforeach
-
+            <div class="mt-4 mb-4 text-center">
+                {!! $posts->links(); !!}
+            </div>
 
         </div>
     </div>

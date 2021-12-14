@@ -17,7 +17,7 @@ class PostsTableSeeder extends Seeder
         $p = new Post;
         $p->title = "Post title";
         $p->contents = "Contents of the post";
-        $p->img = "../assets/atkex_trans.jpeg";
+        $p->image = "../assets/atkex_trans.jpeg";
         $p->user_id = 1;
         $p->group_id = 1;
         $p->save();

@@ -2,7 +2,7 @@
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                <img src="../assets/atkex_trans.jpeg" alt="Image" width=200 height=75>
             </a>
         </x-slot>
 

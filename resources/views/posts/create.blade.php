@@ -16,6 +16,7 @@
                 @csrf
                 <p>Title: <input type="text" name="title" class="form-control"></p>
                 <p>Content: <input type="text" name="contents" class="form-control"></p>
+                <P>Image (URL): <input type="test" name="image" class="form-control"></p>
                 <p>User ID: <input type="text" name="user_id" class="form-control"></p>
                 <p>Group ID: <input type="text" name="group_id" class="form-control"></p>
                 <input type="submit" value="Submit" class="form-control bg-success">

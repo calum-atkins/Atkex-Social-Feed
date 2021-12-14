@@ -1,48 +1,43 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+@extends('layouts.app')
+@section('content')
+<div class="row justify-content-center">
+    <div class="col-md-4">
+        <!-- Session Status -->
+        <x-auth-session-status class="mb-4" :status="session('status')" />
 
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
+        <div class="card mt-5">
+            <div class="card-header">
+                Register Account
+            </div>
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
             <!-- Name -->
             <div>
-                <x-label for="name" :value="__('Name')" />
-
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
+                <p>Username: <input class="form-control" type="name" name="name" :value="old('name')" required autofocus /></p>
             </div>
 
             <!-- Email Address -->
             <div class="mt-4">
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+                <p>Email: <input class="form-control" type="email" name="email" :value="old('email')" required autofocus /></p>
             </div>
 
             <!-- Password -->
             <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full"
+                <p>Password: <input id="password" class="form-control"
                                 type="password"
                                 name="password"
-                                required autocomplete="new-password" />
+                                required autocomplete="new-password" /></p>
             </div>
 
             <!-- Confirm Password -->
             <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                <x-input id="password_confirmation" class="block mt-1 w-full"
+                <p>Confirm Password: <input id="password_confirmation" class="form-control"
                                 type="password"
-                                name="password_confirmation" required />
+                                name="password_confirmation" required /></p>
             </div>
 
             <div class="flex items-center justify-end mt-4">
@@ -50,10 +45,9 @@
                     {{ __('Already registered?') }}
                 </a>
 
-                <x-button class="ml-4">
+                <x-button class="btn ml-4 btn-secondary">
                     {{ __('Register') }}
                 </x-button>
             </div>
         </form>
-    </x-auth-card>
-</x-guest-layout>
+@endsection

@@ -17,7 +17,7 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->string('title'); //Information on the post (text/image the user has posted)
             $table->string('contents'); //Image the user has posted
-            $table->string('img')->nullable();
+            $table->string('image')->nullable();
             $table->bigInteger('user_id')->unsigned(); //profile  of who posted
             $table->bigInteger('group_id')->unsigned(); //posted to what group
             $table->timestamps();
