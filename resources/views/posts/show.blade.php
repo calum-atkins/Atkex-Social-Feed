@@ -50,7 +50,13 @@
             <div class="row justify-content-center">
                 <div class="col-sm-8">
                     <a href="{{ route('posts.edit', ['id' => $post->id]) }}" class="form-control bg-warning text-center">Edit Post</a>
-                    <a href="{{ route('posts.destroy', ['id' => $post->id]) }}" class="form-control bg-danger text-center mb-3">Delete Post</a>
+                    <form action="{{ route('posts.destroy', ['id' => $post->id]) }}" method="POST">
+                        @csrf
+                        {{ method_field('DELETE') }}
+
+                        <button type="submit" class="form-control bg-danger text-center mb-3">Delete Post</button>
+                    </form>
+                    {{-- <a href="{{ route('posts.destroy', ['id' => $post->id]) }}" class="form-control bg-danger text-center mb-3">Delete Post</a> --}}
                 </div>
 
             </div>

@@ -53,6 +53,4 @@
                 </div>
             </form>
         </div>
-    {{-- </x-auth-card> --}}
     @endsection
-{{-- </x-guest-layout> --}}
