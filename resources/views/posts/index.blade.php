@@ -25,17 +25,19 @@
                         {{-- link to group here --}}
                         <dt>Group: {{$post->group->name}}</dt>
                     </div>
-                    @foreach($post->comments as $comment)
+
                     <div class="card mt-1">
                         <div class="card-header">
                             Comments
                         </div>
+                        @foreach($post->comments as $comment)
                         <div class="card-body">
-                            Comment by {{$comment->user->name}}:
+                            <b>{{$comment->user->name}} commented: </b>
                         {{ $comment->contents}}
                         </div>
+                        @endforeach
                     </div>
-                    @endforeach
+
 
                 </div>
             @endforeach
