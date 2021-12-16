@@ -17,8 +17,17 @@
                 <p>Title: <input type="text" name="title" class="form-control"></p>
                 <p>Content: <input type="text" name="contents" class="form-control"></p>
                 <P>Image: <input type="file" name="image" class="form-control"></p>
-                <p>Group ID: <input type="text" name="group_id" class="form-control"></p>
-                <input type="submit" value="Submit" class="form-control bg-success">
+                <p>Group ID:
+                    <select class="form-control" name="group_id" required id="group_id">
+                        <option value="option_select" disabled selected>Select a group...</option>
+
+
+                        @foreach($groups as $group)
+                            <option value="{{ $group->id }}">{{ $group->name}}</option>
+                        @endforeach
+                    </select>
+                </p>
+                <input type="submit" value="Create Post" class="form-control bg-success">
                 <a href="{{ route('posts.index') }}" class="form-control bg-danger text-center">Cancel</a>
                 </form>
             </div>

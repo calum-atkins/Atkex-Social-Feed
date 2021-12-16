@@ -38,9 +38,9 @@ Route::get('/posts', 'App\Http\Controllers\PostController@index')->name('posts.i
 Route::get('/posts/create', 'App\Http\Controllers\PostController@create')->name('posts.create')->middleware(['auth']);
 Route::post('/posts', 'App\Http\Controllers\PostController@store')->name('posts.store');
 Route::get('/posts/{id}', 'App\Http\Controllers\PostController@show')->name('posts.show');
-Route::delete('/posts/{id}', 'App\Http\Controllers\PostController@destroy')->name('posts.destroy');
+Route::delete('/posts/{id}', 'App\Http\Controllers\PostController@destroy')->name('posts.destroy')->middleware(['auth']);
 Route::get('/posts/{id}/edit', 'App\Http\Controllers\PostController@edit')->name('posts.edit')->middleware(['auth']);
-Route::put('/posts/{id}', 'App\Http\Controllers\PostController@update')->name('posts.update');
+Route::put('/posts/{id}', 'App\Http\Controllers\PostController@update')->name('posts.update')->middleware(['auth']);
 
 Route::get('/groups', 'App\Http\Controllers\GroupController@index')->name('groups.index');
 Route::get('/groups/{id}', 'App\Http\Controllers\GroupController@show')->name('groups.show');
