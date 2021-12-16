@@ -25,10 +25,11 @@ class PostFactory extends Factory
     {
         $numberOfUsers = User::count();
         $numberOfGroups = Group::count();
+        $imageNumber = $this->faker->numberBetween(1, 4);
         return [
             'title' => $this->faker->realText(20, 1),
             'contents' => $this->faker->realText(100, 1),
-            'image' => $this->faker->imageUrl(640, 480),
+            'image' => $imageNumber . ".png",
             'user_id' => $this->faker->numberBetween(1, $numberOfUsers),
             'group_id' => $this->faker->numberBetween(1, $numberOfGroups),
         ];

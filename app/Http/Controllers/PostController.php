@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 Use App\Models\Post;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 
@@ -42,15 +43,18 @@ class PostController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|max:25',
             'contents' => 'required|max:255',
-            'image' => 'required|max:255',
+            'image' => 'required|mimes:png',
         ]);
         //return "Passed Validation";
+        $newImageName = time() . '-' . $request->title . '.' . $request->image->extension();
+
+        $request->image->move(public_path('images'), $newImageName);
 
         $p = new Post;
         $p->title = $validatedData['title'];
         $p->contents = $validatedData['contents'];
-        $p->image = $validatedData['image'];
-        $p->user_id = 1;
+        $p->image = $newImageName;
+        $p->user_id = Auth::id();
         $p->group_id = 1;
         $p->save();
 

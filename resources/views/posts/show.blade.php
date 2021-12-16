@@ -10,7 +10,7 @@
                 <ul>
                     <h6></h6>
                     <h1>{{$post->title}}</h1>
-                    <img src={{$post->image}} class="card-img-top" alt="image"></a>
+                    <img src="{{ asset('images/' . $post->image) }}" class="card-img-top" alt="image"></a>
                     <h6>posted by <b>{{$post->user->name}}</b> in group <b>{{$post->group->name}}</b></h6>
                     <h3>{{$post->contents}}</h3>
                 </ul>
