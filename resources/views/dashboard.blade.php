@@ -9,7 +9,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card mt-5">
-                <div class="card-header"><b>ATKEX Dashboard</b>
+                <div class="card-header"><h3>ATKEX Dashboard</h3>
                 </div>
                 <div class="card-body">
                     <p><b>Username:</b> {{ Auth::user()->name }}</p>

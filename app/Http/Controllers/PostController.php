@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 Use App\Models\Post;
+Use App\Models\Group;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -29,7 +30,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        $groups = Group::all();
+        return view('posts.create', ['groups' => $groups]);
     }
 
     /**
@@ -45,6 +47,7 @@ class PostController extends Controller
             'title' => 'required|max:25',
             'contents' => 'required|max:255',
             'image' => 'required|mimes:png',
+            'group' => 'required'
         ]);
         //return "Passed Validation";
         $newImageName = time() . '-' . $request->title . '.' . $request->image->extension();
