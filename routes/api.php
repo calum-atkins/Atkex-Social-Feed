@@ -15,5 +15,5 @@ use App\Http\Controllers\CommentController;
 |
 */
 Route::get('posts/{post}/comments', 'App\Http\Controllers\CommentController@index');
-Route::post('posts/{post}/comment', 'App\Http\Controllers\CommentController@store')->middleware(['auth']);
+Route::post('posts/{post}/comment', 'App\Http\Controllers\CommentController@store');
 

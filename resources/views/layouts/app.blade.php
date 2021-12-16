@@ -38,6 +38,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/posts">Posts</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/groups">Groups</a>
+                    </li>
 
                 </ul>
                 <ul class="navbar-nav justify-content-center navbar-collapse">

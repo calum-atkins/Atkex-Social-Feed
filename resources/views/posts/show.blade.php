@@ -20,22 +20,18 @@
                         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
                         <div class="card" >
                             <div class="card-header">
-                                <b>Comments: </b>
+                                <b>{{ $post->comments()->count() }} Comments: </b>
                             </div>
                             <div class="card-body" v-for="comment in comments">
                                 <b>@{{ comment.user.name}} commented: </b> @{{ comment.contents}}
                             </div>
 
-                        </div>
-                        <div class="card mt-4">
-                            <div class="card-header">
-                                <b>Leave a comment:</b>
-                            </div>
                             <div class="card-body">
                                 <textarea name="comment" class="form-control" placeholder="Leave a comment" v-model="commentBox"></textarea>
                                 <button @click="addComment" type="submit" class="form-control bg-secondary">Post Comment</button>
                             </div>
                         </div>
+
 
                     <script>
                         Vue.config.devtools = true;

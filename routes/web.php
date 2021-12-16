@@ -42,10 +42,11 @@ Route::delete('/posts/{id}', 'App\Http\Controllers\PostController@destroy')->nam
 Route::get('/posts/{id}/edit', 'App\Http\Controllers\PostController@edit')->name('posts.edit')->middleware(['auth']);
 Route::put('/posts/{id}', 'App\Http\Controllers\PostController@update')->name('posts.update');
 
-// Route::get('/getComments/{post}', 'App\Http\Controllers\CommentsController@getComments');
+Route::get('/groups', 'App\Http\Controllers\GroupController@index')->name('groups.index');
+Route::get('/groups/{id}', 'App\Http\Controllers\GroupController@show')->name('groups.show');
+
 
 Route::get('/logout', 'App\Http\Controllers\Auth\AuthenticatedSessionController@destroy');
 
-// Route::post('comments/{post_id}', 'App\Http\Controllers\CommentController@store')->name('comments.store');
 
 require __DIR__.'/auth.php';
