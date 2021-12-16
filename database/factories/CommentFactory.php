@@ -23,10 +23,12 @@ class CommentFactory extends Factory
      */
     public function definition()
     {
+        $numberOfPosts = Post::count();
+        $numberOfUsers = User::count();
         return [
             'contents' => $this->faker->realText(15, 1),
-            'user_id' => User::factory(),
-            'post_id' => Post::factory(),
+            'user_id' => $this->faker->numberBetween(1, $numberOfUsers),
+            'post_id' => $this->faker->numberBetween(1, $numberOfPosts),
         ];
     }
 }

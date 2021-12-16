@@ -23,12 +23,14 @@ class PostFactory extends Factory
      */
     public function definition()
     {
+        $numberOfUsers = User::count();
+        $numberOfGroups = Group::count();
         return [
             'title' => $this->faker->realText(20, 1),
             'contents' => $this->faker->realText(100, 1),
             'image' => $this->faker->imageUrl(640, 480),
-            'user_id' => User::factory(),
-            'group_id' => Group::factory(),
+            'user_id' => $this->faker->numberBetween(1, $numberOfUsers),
+            'group_id' => $this->faker->numberBetween(1, $numberOfGroups),
         ];
     }
 }

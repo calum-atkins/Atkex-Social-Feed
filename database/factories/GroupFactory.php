@@ -22,10 +22,11 @@ class GroupFactory extends Factory
      */
     public function definition()
     {
+        $numberOfUsers = User::count();
         return [
             'name' => $this->faker->domainWord(),
             'description' => $this->faker->city(),
-            'user_id' => User::factory(),
+            'user_id' => $this->faker->numberBetween(1, $numberOfUsers),
         ];
     }
 }
