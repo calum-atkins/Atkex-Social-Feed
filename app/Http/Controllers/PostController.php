@@ -59,7 +59,7 @@ class PostController extends Controller
         $p->group_id = 1;
         $p->save();
 
-        session()->flash('message', 'Post was created.');
+        session()->flash('message', 'Post created successfully.');
         return redirect()->route('posts.index');
     }
 
@@ -113,7 +113,7 @@ class PostController extends Controller
         $post->group_id = $request->input('group_id');
         $post->save();
 
-        session()->flash('message', 'Post was Edited.');
+        session()->flash('message', 'Post edited successfully.');
         return redirect()->route('posts.show', $post->id);
     }
 
@@ -128,7 +128,7 @@ class PostController extends Controller
         $post = Post::find($id);
         $post->delete();
 
-        session()->flash('message', 'Post was Deleted.');
+        session()->flash('message', 'Post deleted successfully.');
         return redirect()->route('posts.index');
     }
 }

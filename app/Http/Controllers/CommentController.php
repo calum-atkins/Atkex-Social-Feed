@@ -18,7 +18,6 @@ class CommentController extends Controller
      */
     public function index(Post $post)
     {
-        // return view('posts.edit', ['post' => $post]);
         return response()->json($post->comments()->with('user')->latest()->get());
     }
 
@@ -49,6 +48,8 @@ class CommentController extends Controller
         $comment = Comment::where('id', $comment->id)->with('user')->first();
 
         Notification::route('mail', 'my@app.com')->notify(new NewComment($comment));
+
+        session()->flash('message', 'Comment created successfully.');
 
         return $comment->toJson();
     }
@@ -95,6 +96,5 @@ class CommentController extends Controller
      */
     public function destroy($id)
     {
-        //
     }
 }

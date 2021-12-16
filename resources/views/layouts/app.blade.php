@@ -79,32 +79,27 @@
 
 
         <div class="row">
-            <div class="message">
-                @if (session('message'))
+            @if (session('message'))
+            <div class="alert alert-success" role="alert">
                 <p><h2>{{ session('message') }}</h2></p>
-                @endif
             </div>
+            @endif
+
+            @if ($errors->any())
+            <div class="alert alert-warning" role="alert">
+                Errors:
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li> {{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
+
             <div class="row">
                 @yield('content')
             <div>
         </div>
-
-
-        {{-- <body>
-            <h1>@yield('title')</h1>
-                @if ($errors->any())
-            <div>
-                Errors:
-            <ul>
-                @foreach ($errors->all() as $error)
-                   <li> {{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-        @endif --}}
-
-
-
     </body>
 </html>
 
