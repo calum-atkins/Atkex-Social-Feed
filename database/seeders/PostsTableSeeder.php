@@ -22,6 +22,6 @@ class PostsTableSeeder extends Seeder
         $p->group_id = 1;
         $p->save();
 
-        $posts = Post::factory()->count(30)->create();
+        $posts = Post::factory()->count(100)->create();
     }
 }

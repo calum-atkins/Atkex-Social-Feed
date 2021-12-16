@@ -15,13 +15,11 @@ class GroupsTableSeeder extends Seeder
     public function run()
     {
         $g = new Group;
-        $g->name = 'group 55';
-        $g->description = 'this is group 55';
+        $g->name = 'Trading';
+        $g->description = 'Stock markets discussion';
         $g->user_id = 1;
         $g->save();
 
-        //$g->users()->attach(1);
-
-        $groups = Group::factory()->count(5)->create();
+        $groups = Group::factory()->count(10)->create();
     }
 }

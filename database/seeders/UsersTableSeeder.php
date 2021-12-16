@@ -18,10 +18,10 @@ class UsersTableSeeder extends Seeder
     {
         $u = new User();
         $u->name = "calum.a";
-        $u->email = "calum1atkins@gmail.com";
+        $u->email = "admin@gmail.com";
         $u->password = Hash::make("password");
         $u->save();
 
-        $users = User::factory()->count(10)->create();
+        $users = User::factory()->count(25)->create();
     }
 }

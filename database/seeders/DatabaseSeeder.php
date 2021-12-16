@@ -18,10 +18,5 @@ class DatabaseSeeder extends Seeder
         $this->call(GroupsTableSeeder::class);
         $this->call(PostsTableSeeder::class);
         $this->call(CommentsTableSeeder::class);
-
-        // \App\Models\Group::factory(5)
-        //     ->has(\App\Models\Post::factory()->count(5))
-        //     ->has(\App\Models\Comment::factory()->count(10))
-        //     ->create();
     }
 }
