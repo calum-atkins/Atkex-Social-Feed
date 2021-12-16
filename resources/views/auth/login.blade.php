@@ -12,6 +12,7 @@
             <div class="card-header">
                 Login Details
             </div>
+            <div class="card-body">
             <form method="POST" action="{{ route('login') }}">
                 @csrf
 
@@ -47,10 +48,12 @@
                         </a>
                     @endif
 
-                    <x-button class="btn ml-5 btn-secondary">
+                    <x-button class="btn ml-4 btn-secondary">
                         {{ __('Log in') }}
                     </x-button>
                 </div>
             </form>
         </div>
-    @endsection
+    </div>
+</div>
+@endsection

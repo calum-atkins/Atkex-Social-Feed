@@ -12,6 +12,7 @@
             <div class="card-header">
                 Register Account
             </div>
+            <div class="card-body">
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
@@ -50,4 +51,6 @@
                 </x-button>
             </div>
         </form>
+    </div>
+</div>
 @endsection

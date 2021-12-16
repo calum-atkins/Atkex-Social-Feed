@@ -12,6 +12,7 @@
             <div class="card-header">
                 Forgot Password?
             </div>
+            <div class="card-body">
         <form method="POST" action="{{ route('password.email') }}">
             @csrf
 
@@ -26,4 +27,6 @@
                 </x-button>
             </div>
         </form>
+    </div>
+</div>
 @endsection

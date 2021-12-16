@@ -1,13 +1,19 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <img src="../assets/atkex_trans.jpeg" alt="Image" width=200 height=75>
-            </a>
-        </x-slot>
+@extends('layouts.app')
+@section('content')
+<div class="row justify-content-center">
+    <div class="col-md-4">
+        <!-- Session Status -->
+        <x-auth-session-status class="mb-4" :status="session('status')" />
 
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
+
+
+        <div class="card mt-5">
+            <div class="card-header">
+                Reset Password
+            </div>
+        <div class="card-body">
 
         <form method="POST" action="{{ route('password.update') }}">
             @csrf
@@ -19,21 +25,21 @@
             <div>
                 <x-label for="email" :value="__('Email')" />
 
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)" required autofocus />
+                <x-input id="email" class="form-control" type="email" name="email" :value="old('email', $request->email)" required autofocus />
             </div>
 
             <!-- Password -->
             <div class="mt-4">
                 <x-label for="password" :value="__('Password')" />
 
-                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required />
+                <x-input id="password" class="form-control" type="password" name="password" required />
             </div>
 
             <!-- Confirm Password -->
             <div class="mt-4">
                 <x-label for="password_confirmation" :value="__('Confirm Password')" />
 
-                <x-input id="password_confirmation" class="block mt-1 w-full"
+                <x-input id="password_confirmation" class="form-control"
                                     type="password"
                                     name="password_confirmation" required />
             </div>
@@ -44,5 +50,6 @@
                 </x-button>
             </div>
         </form>
-    </x-auth-card>
-</x-guest-layout>
+    </div>
+</div>
+@endsection

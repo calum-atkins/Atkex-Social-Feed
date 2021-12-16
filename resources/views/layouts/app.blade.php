@@ -77,15 +77,16 @@
 
         </nav>
 
-        <div class="row justify-content-center">
-            @if (session('message'))
-                <p><h2>{{ session('message') }}</h2></p>
-            @endif
-        </div>
-
 
         <div class="row">
-            @yield('content')
+            <div class="message">
+                @if (session('message'))
+                <p><h2>{{ session('message') }}</h2></p>
+                @endif
+            </div>
+            <div class="row">
+                @yield('content')
+            <div>
         </div>
 
 
