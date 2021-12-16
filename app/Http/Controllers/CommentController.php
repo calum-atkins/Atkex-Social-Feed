@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Comment;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Auth;
+use App\Notifications\NewComment;
 
 class CommentController extends Controller
 {
@@ -45,6 +47,8 @@ class CommentController extends Controller
         ]);
 
         $comment = Comment::where('id', $comment->id)->with('user')->first();
+
+        Notification::route('mail', 'my@app.com')->notify(new NewComment($comment));
 
         return $comment->toJson();
     }
