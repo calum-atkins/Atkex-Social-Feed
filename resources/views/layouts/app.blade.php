@@ -44,9 +44,9 @@
 
                 </ul>
                 <ul class="navbar-nav justify-content-center navbar-collapse">
-                    <h1 class="nav-item">
+                    <h3 class="nav-item">
                         @yield('title')
-                    </h1>
+                    </h3>
                 </ul>
                 <div class="d-flex navbar-nav mr-auto mb-2 mb-lg-0">
                     @if (Route::has('login'))

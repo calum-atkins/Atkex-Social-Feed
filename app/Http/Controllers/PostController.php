@@ -56,7 +56,7 @@ class PostController extends Controller
         $p->contents = $validatedData['contents'];
         $p->image = $newImageName;
         $p->user_id = Auth::id();
-        $p->group_id = 1;
+        $p->group_id = $request->group_id;
         $p->save();
 
         session()->flash('message', 'Post created successfully.');
@@ -85,7 +85,12 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = Post::find($id);
-        return view('posts.edit', ['post' => $post]);
+        if ($post->user_id !== auth()->user()->id) {
+            session()->flash('message', 'You  do not have permission to edit this post.');
+            return redirect()->back();
+        } else {
+            return view('posts.edit', ['post' => $post]);
+        }
     }
 
     /**
@@ -115,6 +120,7 @@ class PostController extends Controller
 
         session()->flash('message', 'Post edited successfully.');
         return redirect()->route('posts.show', $post->id);
+
     }
 
     /**
@@ -125,10 +131,16 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        $post = Post::find($id);
-        $post->delete();
 
-        session()->flash('message', 'Post deleted successfully.');
-        return redirect()->route('posts.index');
+        $post = Post::find($id);
+        if ($post->user_id !== auth()->user()->id) {
+            session()->flash('message', 'You  do not have permission to delete this post.');
+            return redirect()->back();
+        } else {
+            $post->delete();
+
+            session()->flash('message', 'Post deleted successfully.');
+            return redirect()->route('posts.index');
+        }
     }
 }
