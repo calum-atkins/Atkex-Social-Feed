@@ -10,8 +10,8 @@
                 <ul>
                     <h6></h6>
                     <h1>{{$post->title}}</h1>
-                    <img src="{{ asset('images/' . $post->image) }}" class="card-img-top" alt="image"></a>
                     <h6>posted by <b>{{$post->user->name}}</b> in group <b>{{$post->group->name}}</b></h6>
+                    <img src="{{ asset('images/' . $post->image) }}" class="card-img-top" alt="image"></a>
                     <h3>{{$post->contents}}</h3>
                 </ul>
                 <div class="row">
@@ -20,7 +20,7 @@
                         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
                         <div class="card" >
                             <div class="card-header">
-                                <b>{{ $post->comments()->count() }} Comments: </b>
+                                <b>Comments: </b>
                             </div>
                             <div class="card-body" v-for="comment in comments">
                                 <b>@{{ comment.user.name}} commented: </b> @{{ comment.contents}}
@@ -93,6 +93,10 @@
             <dl class="dl-horizontal text-center">
                 <dt>Updated At:</dt>
                 <dd>{{ date( 'M j, Y H:i', strtotime($post->updated_at)) }}</dd>
+            </dl>
+            <dl class="dl-horizontal text-center">
+                <dt>Number of comments:</dt>
+                <dd>{{ $post->comments()->count() }}</dd>
             </dl>
             <div class="row justify-content-center">
                 <div class="col-sm-8">
