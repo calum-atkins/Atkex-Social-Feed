@@ -59,7 +59,7 @@ class PostController extends Controller
         $p->contents = $validatedData['contents'];
         $p->image = $newImageName;
         $p->user_id = Auth::id();
-        $p->group_id = $request->group_id;
+        $p->group_id = $validatedData['group'];
         $p->save();
 
         session()->flash('message', 'Post created successfully.');
@@ -92,7 +92,10 @@ class PostController extends Controller
             session()->flash('message', 'You  do not have permission to edit this post.');
             return redirect()->back();
         } else {
-            return view('posts.edit', ['post' => $post]);
+            $g = Group::find($id)->name;
+            $groups = Group::all();
+
+            return view('posts.edit', ['post' => $post, 'groups' => $groups, 'g' => $g]);
         }
     }
 
@@ -106,18 +109,18 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         //dd($request['username']);
-        $this->validate($request, array(
+        $validatedData = $request->validate([
             'title' => 'required|max:25',
             'contents' => 'required|max:255',
-            'image' => 'required|max:255',
-        ));
+            // 'image' => 'required|mimes:png',
+        ]);
         //return "Passed Validation";
 
         $post = Post::find($id);
         $post->title = $request->input('title');
         $post->contents = $request->input('contents');
         $post->image = $request->input('image');
-        $post->user_id = $request->input('user_id');
+        $post->user_id = Auth::id();
         $post->group_id = $request->input('group_id');
         $post->save();
 

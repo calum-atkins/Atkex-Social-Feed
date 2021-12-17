@@ -17,8 +17,8 @@
                 <p>Title: <input type="text" name="title" class="form-control"></p>
                 <p>Content: <input type="text" name="contents" class="form-control"></p>
                 <P>Image: <input type="file" name="image" class="form-control"></p>
-                <p>Group ID:
-                    <select class="form-control" name="group_id" required id="group_id">
+                <p>Group:
+                    <select class="form-control" name="group" required id="group">
                         <option value="option_select" disabled selected>Select a group...</option>
 
 
